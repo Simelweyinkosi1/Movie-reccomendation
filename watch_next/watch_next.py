@@ -12,10 +12,12 @@ def watch_next(desc):
     with open(file_to_open, "r") as movies_data:
         data = movies_data.read()
 
-    movies = data.replace('\n', ' ').split(".")
+    movies = data.split('\n')
     lst = {}
     for token in movies:
+        # print(token)
         token = nlp(token)
+        
         result = token.similarity(desc)
         print()
         print(f"output {result:.2f} ")
